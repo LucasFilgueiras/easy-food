@@ -1,0 +1,65 @@
+inherited frmContasAReceber: TfrmContasAReceber
+  Caption = 'Contas a receber'
+  TextHeight = 15
+  inherited pgcFormulario: TPageControl
+    inherited tabDados: TTabSheet
+      object lblCodigo: TLabel [0]
+        Left = 32
+        Top = 112
+        Width = 39
+        Height = 15
+        Caption = 'C'#243'digo'
+      end
+      object lblOrigem: TLabel [1]
+        Left = 32
+        Top = 176
+        Width = 40
+        Height = 15
+        Caption = 'Origem'
+      end
+      object lblValor: TLabel [2]
+        Left = 32
+        Top = 243
+        Width = 26
+        Height = 15
+        Caption = 'Valor'
+      end
+      inherited pnlTopo: TPanel
+        inherited lblTitulo: TLabel
+          Caption = 'Contas a receber'
+          ExplicitWidth = 184
+        end
+        inherited navDados: TDBNavigator
+          Hints.Strings = ()
+        end
+      end
+      object edtCodigo: TDBEdit
+        Left = 32
+        Top = 133
+        Width = 121
+        Height = 23
+        Enabled = False
+        TabOrder = 1
+      end
+      object edtOrigem: TDBEdit
+        Left = 32
+        Top = 197
+        Width = 530
+        Height = 23
+        Enabled = False
+        TabOrder = 2
+      end
+      object edtValor: TDBEdit
+        Left = 32
+        Top = 264
+        Width = 121
+        Height = 23
+        Enabled = False
+        TabOrder = 3
+      end
+    end
+  end
+  inherited DSBusca: TDataSource
+    DataSet = modelContasAReceber.QBuscaContasAReceber
+  end
+end

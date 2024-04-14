@@ -1,0 +1,9 @@
+object modelCardapio: TmodelCardapio
+  Height = 480
+  Width = 640
+  object QBuscaCardapio: TFDQuery
+    Connection = modelConexao.FDConn
+    Left = 120
+    Top = 112
+  end
+end

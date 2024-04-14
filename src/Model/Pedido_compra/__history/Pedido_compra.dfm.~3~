@@ -1,0 +1,9 @@
+object modelPedidoCompra: TmodelPedidoCompra
+  Height = 480
+  Width = 640
+  object QBuscaPedidoCompra: TFDQuery
+    Connection = modelConexao.FDConn
+    Left = 96
+    Top = 80
+  end
+end

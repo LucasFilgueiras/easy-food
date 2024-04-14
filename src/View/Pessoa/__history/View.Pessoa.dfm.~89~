@@ -1,0 +1,197 @@
+﻿inherited frmPessoa: TfrmPessoa
+  Caption = 'Pessoa'
+  Position = poMainFormCenter
+  ExplicitWidth = 722
+  ExplicitHeight = 549
+  TextHeight = 15
+  inherited pgcFormulario: TPageControl
+    ExplicitWidth = 706
+    ExplicitHeight = 510
+    inherited tabDados: TTabSheet
+      ExplicitWidth = 702
+      ExplicitHeight = 481
+      object lblCodigo: TLabel [0]
+        Left = 32
+        Top = 112
+        Width = 39
+        Height = 15
+        Caption = 'C'#243'digo'
+      end
+      object lblNome: TLabel [1]
+        Left = 192
+        Top = 112
+        Width = 33
+        Height = 15
+        Caption = 'Nome'
+      end
+      object lblEndereco: TLabel [2]
+        Left = 32
+        Top = 184
+        Width = 49
+        Height = 15
+        Caption = 'Endere'#231'o'
+      end
+      object lblDescrição: TLabel [3]
+        Left = 32
+        Top = 248
+        Width = 51
+        Height = 15
+        Caption = 'Descri'#231#227'o'
+      end
+      object lblTipoPessoa: TLabel [4]
+        Left = 32
+        Top = 315
+        Width = 62
+        Height = 15
+        Caption = 'Tipo pessoa'
+      end
+      inherited pnlTopo: TPanel
+        Width = 702
+        ExplicitWidth = 698
+        inherited lblTitulo: TLabel
+          Width = 73
+          Caption = 'Pessoa'
+          ExplicitWidth = 73
+        end
+        inherited navDados: TDBNavigator
+          Width = 700
+          DataSource = DSBusca
+          Hints.Strings = ()
+          OnClick = navDadosClick
+          ExplicitWidth = 696
+        end
+      end
+      object edtNome: TDBEdit
+        Left = 192
+        Top = 133
+        Width = 361
+        Height = 23
+        DataField = 'NOME'
+        DataSource = DSBusca
+        TabOrder = 1
+      end
+      object edtEndereco: TDBEdit
+        Left = 32
+        Top = 205
+        Width = 521
+        Height = 23
+        DataField = 'ENDERECO'
+        DataSource = DSBusca
+        TabOrder = 2
+      end
+      object edtDescricao: TDBEdit
+        Left = 32
+        Top = 269
+        Width = 521
+        Height = 23
+        DataField = 'DESCRICAO'
+        DataSource = DSBusca
+        TabOrder = 3
+      end
+      object edtCodigo: TDBEdit
+        Left = 32
+        Top = 133
+        Width = 105
+        Height = 23
+        DataField = 'ID'
+        DataSource = DSBusca
+        Enabled = False
+        TabOrder = 4
+      end
+      object CBTipoPessoa: TDBLookupComboBox
+        Left = 32
+        Top = 336
+        Width = 145
+        Height = 23
+        BevelOuter = bvRaised
+        DataField = 'TIPO_PESSOA'
+        DataSource = DSBusca
+        KeyField = 'ID'
+        ListField = 'NOME'
+        ListSource = DSTipoPessoa
+        TabOrder = 5
+      end
+    end
+    inherited tabBusca: TTabSheet
+      ExplicitWidth = 702
+      ExplicitHeight = 481
+      inherited pnlPesquisa: TPanel
+        Width = 702
+        ExplicitWidth = 698
+        inherited edtPesquisa: TEdit
+          Width = 578
+          OnChange = edtPesquisaChange
+          ExplicitWidth = 578
+        end
+      end
+      inherited gridBusca: TDBGrid
+        Width = 702
+        Height = 374
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'TIPO_PESSOA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESCRICAO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ENDERECO'
+            Visible = True
+          end>
+      end
+      object pnlFiltroPesquisa: TPanel
+        Left = 0
+        Top = 431
+        Width = 702
+        Height = 50
+        Align = alBottom
+        TabOrder = 2
+        ExplicitTop = 430
+        ExplicitWidth = 698
+        object RGFiltro: TRadioGroup
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
+          Width = 694
+          Height = 42
+          Align = alClient
+          BiDiMode = bdLeftToRight
+          Caption = 'Pesquisar por:'
+          Columns = 8
+          ItemIndex = 1
+          Items.Strings = (
+            'ID'
+            'NOME')
+          ParentBiDiMode = False
+          TabOrder = 0
+          ExplicitWidth = 690
+        end
+      end
+    end
+  end
+  inherited DSBusca: TDataSource
+    DataSet = modelPessoa.QBuscaPessoa
+    Left = 620
+    Top = 370
+  end
+  object DSTipoPessoa: TDataSource
+    DataSet = modelPessoa.QTipoPessoa
+    Left = 524
+    Top = 370
+  end
+end

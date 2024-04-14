@@ -1,0 +1,33 @@
+unit View.Pessoa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.base, Data.DB, Vcl.StdCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls, Vcl.ExtCtrls, Model.conexao, Model.pessoa,
+  Vcl.Mask;
+
+type
+  TfrmCadastroPessoa = class(TfrmBase)
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadastroPessoa: TfrmCadastroPessoa;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCadastroPessoa.FormCreate(Sender: TObject);
+begin
+  inherited;
+  lblQuantRegistros.Caption := 'Registros encontrados: ' + IntToStr(DataSource1.DataSet.RecordCount);
+end;
+
+end.

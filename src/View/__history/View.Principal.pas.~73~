@@ -1,0 +1,128 @@
+unit View.Principal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls,
+  View.Pessoa, View.Produto, View.Contas_a_pagar, View.Contas_a_receber,
+  View.Cardapio, View.Pedido_venda, View.Pedido_compra, Vcl.Imaging.pngimage;
+
+type
+  TfrmPrincipal = class(TForm)
+    MainMenu1: TMainMenu;
+    Cadastros1: TMenuItem;
+    Financeiro1: TMenuItem;
+    Funcionrios1: TMenuItem;
+    Produtos1: TMenuItem;
+    Contasapagar1: TMenuItem;
+    Contasareceber1: TMenuItem;
+    pnlRodape: TPanel;
+    lblLicenca: TLabel;
+    Pedidos1: TMenuItem;
+    Pedidodevenda1: TMenuItem;
+    Pedidodecompra1: TMenuItem;
+    Cardpio1: TMenuItem;
+    imgLogo: TImage;
+    pnlLogo: TPanel;
+    lblLogo1: TLabel;
+    lblLogo2: TLabel;
+    ListBox1: TListBox;
+    procedure Funcionrios1Click(Sender: TObject);
+    procedure Produtos1Click(Sender: TObject);
+    procedure Contasapagar1Click(Sender: TObject);
+    procedure Contasareceber1Click(Sender: TObject);
+    procedure Cardpio1Click(Sender: TObject);
+    procedure Pedidodevenda1Click(Sender: TObject);
+    procedure Pedidodecompra1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+  frmPessoa: TfrmPessoa;
+  frmProduto: TfrmProduto;
+  frmContasAPagar: TfrmContasAPagar;
+  frmContasAReceber: TfrmContasAReceber;
+  frmCardapio: TfrmCardapio;
+  frmPedidoVenda: TfrmPedidoVenda;
+  frmPedidoCompra: TfrmPedidoCompra;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmPrincipal.Cardpio1Click(Sender: TObject);
+begin
+  try
+    frmCardapio := TfrmCardapio.Create(Self);
+    frmCardapio.ShowModal;
+  finally
+    frmCardapio.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.Contasapagar1Click(Sender: TObject);
+begin
+  try
+    frmContasAPagar := TfrmContasAPagar.Create(Self);
+    frmContasAPagar.ShowModal;
+  finally
+    frmContasAPagar.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.Contasareceber1Click(Sender: TObject);
+begin
+  try
+    frmContasAReceber := TfrmContasAReceber.Create(Self);
+    frmContasAReceber.ShowModal;
+  finally
+    frmContasAReceber.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.Funcionrios1Click(Sender: TObject);
+begin
+  try
+    frmPessoa := TfrmPessoa.Create(Self);
+    frmPessoa.ShowModal;
+  finally
+    frmPessoa.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.Pedidodecompra1Click(Sender: TObject);
+begin
+  try
+    frmPedidoCompra := TfrmPedidoCompra.Create(Self);
+    frmPedidoCompra.ShowModal;
+  finally
+    frmPedidoCompra.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.Pedidodevenda1Click(Sender: TObject);
+begin
+  try
+    frmPedidoVenda := TfrmPedidoVenda.Create(Self);
+    frmPedidoVenda.ShowModal;
+  finally
+    frmPedidoVenda.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.Produtos1Click(Sender: TObject);
+begin
+  try
+    frmProduto := TfrmProduto.Create(Self);
+    frmProduto.ShowModal;
+  finally
+    frmProduto.Free;
+  end;
+end;
+
+end.

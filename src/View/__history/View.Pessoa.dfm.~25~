@@ -1,0 +1,163 @@
+inherited frmCadastroPessoa: TfrmCadastroPessoa
+  Caption = 'Cadastro Pessoa'
+  ClientHeight = 457
+  ClientWidth = 654
+  ExplicitWidth = 666
+  ExplicitHeight = 495
+  TextHeight = 15
+  inherited pnlTopo: TPanel
+    Width = 654
+    ExplicitTop = 0
+    ExplicitWidth = 650
+    inherited DBNavigator: TDBNavigator
+      Width = 652
+      DataSource = DataSource1
+      VisibleButtons = [nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh]
+      Hints.Strings = ()
+      ExplicitWidth = 648
+    end
+  end
+  inherited pnlConteudo: TPanel
+    Width = 654
+    Height = 166
+    ExplicitWidth = 650
+    ExplicitHeight = 165
+    inherited DBGrid: TDBGrid
+      Width = 652
+      Height = 164
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'ID'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NOME'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'TIPO_PESSOA'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'DESCRICAO'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ENDERECO'
+          Visible = True
+        end>
+    end
+  end
+  inherited pnlRodape: TPanel
+    Top = 223
+    Width = 654
+    Height = 234
+    ExplicitTop = 222
+    ExplicitWidth = 650
+    ExplicitHeight = 234
+    inherited lblQuantRegistros: TLabel
+      Top = 215
+      Width = 646
+      Height = 15
+      Align = alBottom
+      ExplicitTop = 208
+      ExplicitWidth = 129
+      ExplicitHeight = 15
+    end
+    object lblNome: TLabel
+      Left = 162
+      Top = 6
+      Width = 33
+      Height = 15
+      Caption = 'Nome'
+      FocusControl = edtNome
+    end
+    object lblTipoPessoa: TLabel
+      Left = 4
+      Top = 64
+      Width = 62
+      Height = 15
+      Caption = 'Tipo pessoa'
+      FocusControl = edtTipoPessoa
+    end
+    object lblDescricao: TLabel
+      Left = 216
+      Top = 64
+      Width = 51
+      Height = 15
+      Caption = 'Descri'#231#227'o'
+      FocusControl = edtDescricao
+    end
+    object lblEndereco: TLabel
+      Left = 4
+      Top = 115
+      Width = 49
+      Height = 15
+      Caption = 'Endere'#231'o'
+      FocusControl = edtEndereco
+    end
+    object edtId: TLabel
+      Left = 4
+      Top = 6
+      Width = 10
+      Height = 15
+      Caption = 'Id'
+    end
+    object edtNome: TDBEdit
+      Left = 162
+      Top = 27
+      Width = 404
+      Height = 23
+      DataField = 'NOME'
+      DataSource = DataSource1
+      TabOrder = 0
+    end
+    object edtTipoPessoa: TDBEdit
+      Left = 4
+      Top = 80
+      Width = 154
+      Height = 23
+      DataField = 'TIPO_PESSOA'
+      DataSource = DataSource1
+      TabOrder = 1
+    end
+    object edtDescricao: TDBEdit
+      Left = 216
+      Top = 85
+      Width = 350
+      Height = 23
+      DataField = 'DESCRICAO'
+      DataSource = DataSource1
+      TabOrder = 2
+    end
+    object edtEndereco: TDBEdit
+      Left = 4
+      Top = 136
+      Width = 562
+      Height = 23
+      DataField = 'ENDERECO'
+      DataSource = DataSource1
+      TabOrder = 3
+    end
+    object DBEdit1: TDBEdit
+      Left = 4
+      Top = 27
+      Width = 101
+      Height = 23
+      DataField = 'ID'
+      DataSource = DataSource1
+      Enabled = False
+      TabOrder = 4
+    end
+  end
+  inherited DataSource1: TDataSource
+    DataSet = modelPessoa.QPessoa
+    Left = 552
+    Top = 145
+  end
+end

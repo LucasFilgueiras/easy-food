@@ -1,0 +1,51 @@
+unit View.Contas_a_receber;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Base, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  Model.Contas_a_receber, Vcl.Buttons;
+
+type
+  TfrmContasAReceber = class(TfrmBase)
+    lblCodigo: TLabel;
+    edtCodigo: TDBEdit;
+    lblOrigem: TLabel;
+    edtOrigem: TDBEdit;
+    lblValor: TLabel;
+    edtValor: TDBEdit;
+    lblStatus: TLabel;
+    btnReceber: TBitBtn;
+    procedure pgcFormularioChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmContasAReceber: TfrmContasAReceber;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmContasAReceber.pgcFormularioChange(Sender: TObject);
+begin
+  inherited;
+  if DSBusca.DataSet.FieldByName('status').Value = 0 then
+  begin
+    lblStatus.Caption:= 'Status da conta: Não recebida';
+    lblStatus.Font.Color:= clRed;
+  end
+  else
+  begin
+    lblStatus.Caption:= 'Status da conta: Recebida';
+    lblStatus.Font.Color:= clGreen;
+    btnPagar.Enabled:= false;
+  end;
+end;
+
+end.

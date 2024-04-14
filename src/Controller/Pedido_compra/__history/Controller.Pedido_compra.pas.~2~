@@ -1,0 +1,11 @@
+unit Controller.Pedido_compra;
+
+interface
+
+uses Model.Pedido_compra;
+
+procedure gerarContasAPagar();
+
+implementation
+
+end.

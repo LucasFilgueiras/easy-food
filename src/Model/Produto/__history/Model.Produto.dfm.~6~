@@ -1,0 +1,11 @@
+object modelProduto: TmodelProduto
+  Height = 480
+  Width = 640
+  object QBuscaProduto: TFDQuery
+    Connection = modelConexao.FDConn
+    SQL.Strings = (
+      'SELECT * FROM produto;')
+    Left = 104
+    Top = 88
+  end
+end

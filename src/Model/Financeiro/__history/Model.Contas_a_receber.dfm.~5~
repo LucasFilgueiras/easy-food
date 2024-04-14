@@ -1,0 +1,12 @@
+object DataModule1: TDataModule1
+  Height = 480
+  Width = 640
+  object QBuscaContasAReceber: TFDQuery
+    Active = True
+    Connection = modelConexao.FDConn
+    SQL.Strings = (
+      'SELECT * FROM contas_a_receber ORDER BY id ASC;')
+    Left = 128
+    Top = 112
+  end
+end

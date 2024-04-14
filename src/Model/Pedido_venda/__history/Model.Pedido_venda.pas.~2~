@@ -1,0 +1,25 @@
+unit Model.Pedido_venda;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TmodelPedidoVenda = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  modelPedidoVenda: TmodelPedidoVenda;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

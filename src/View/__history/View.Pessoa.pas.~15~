@@ -1,0 +1,36 @@
+unit View.Pessoa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.base, Data.DB, Vcl.StdCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.DBCtrls, Vcl.ExtCtrls, Model.conexao, Model.pessoa,
+  Vcl.Mask;
+
+type
+  TfrmCadastroPessoa = class(TfrmBase)
+    lblNome: TLabel;
+    edtNome: TDBEdit;
+    lblTipoPessoa: TLabel;
+    edtTipoPessoa: TDBEdit;
+    lblDescricao: TLabel;
+    edtDescricao: TDBEdit;
+    lblEndereco: TLabel;
+    edtEndereco: TDBEdit;
+    edtId: TLabel;
+    DBEdit1: TDBEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadastroPessoa: TfrmCadastroPessoa;
+
+implementation
+
+{$R *.dfm}
+
+end.

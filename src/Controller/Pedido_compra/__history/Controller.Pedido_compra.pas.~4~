@@ -1,0 +1,27 @@
+unit Controller.Pedido_compra;
+
+interface
+
+uses Model.Pedido_compra;
+
+procedure gerarContasAPagar();
+
+implementation
+
+procedure gerarContasAPagar();
+var
+  modelPedidoCompra: TmodelPedidoCompra;
+begin
+  modelPedidoCompra := TmodelPedidoCompra.Create(nil);
+  try
+    modelPedidoCompra.QGerarFinanceiro.SQL.Clear;
+    modelPedidoCompra.QGerarFinanceiro.SQL.Add('INSERT INTO contas_a_pagar(origem, valor) VALUES (:origem, :valor)');
+    modelPedidoCompra.QGerarFinanceiro.ParamByName('origem').AsString := 'Pedido de compra(' + edtCodigo.Text + ')';
+    modelPedidoCompra.QGerarFinanceiro.ParamByName('valor').AsFloat := StrToFloat(edtValor.Text);
+    modelPedidoCompra.QGerarFinanceiro.ExecSQL;
+  finally
+
+  end;
+end;
+
+end.

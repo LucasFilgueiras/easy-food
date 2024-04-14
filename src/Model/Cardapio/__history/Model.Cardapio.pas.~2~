@@ -1,0 +1,25 @@
+unit Model.Cardapio;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TmodelCardapio = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  modelCardapio: TmodelCardapio;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

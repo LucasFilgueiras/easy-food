@@ -1,0 +1,25 @@
+unit Model.Contas_a_pagar;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TmodelContasAPagar = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  modelContasAPagar: TmodelContasAPagar;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

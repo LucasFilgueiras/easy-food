@@ -1,0 +1,33 @@
+unit View.Contas_a_receber;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Base, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  Model.Contas_a_receber;
+
+type
+  TfrmContasAReceber = class(TfrmBase)
+    lblCodigo: TLabel;
+    edtCodigo: TDBEdit;
+    lblOrigem: TLabel;
+    edtOrigem: TDBEdit;
+    lblValor: TLabel;
+    edtValor: TDBEdit;
+    lblStatus: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmContasAReceber: TfrmContasAReceber;
+
+implementation
+
+{$R *.dfm}
+
+end.

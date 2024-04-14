@@ -1,0 +1,8 @@
+object modelProduto: TmodelProduto
+  Height = 480
+  Width = 640
+  object QBuscaProduto: TFDQuery
+    Left = 104
+    Top = 88
+  end
+end

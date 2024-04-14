@@ -1,0 +1,67 @@
+unit View.Pessoa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Base, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  Model.pessoa, Model.conexao, DB;
+
+type
+  TfrmPessoa = class(TfrmBase)
+    lblCodigo: TLabel;
+    lblNome: TLabel;
+    edtNome: TDBEdit;
+    lblEndereco: TLabel;
+    edtEndereco: TDBEdit;
+    lblDescrição: TLabel;
+    edtDescricao: TDBEdit;
+    lblTipoPessoa: TLabel;
+    edtCodigo: TDBEdit;
+    CBTipoPessoa: TDBLookupComboBox;
+    DSTipoPessoa: TDataSource;
+    pnlFiltroPesquisa: TPanel;
+    RGFiltro: TRadioGroup;
+    procedure edtPesquisaChange(Sender: TObject);
+    procedure navDadosClick(Sender: TObject; Button: TNavigateBtn);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPessoa: TfrmPessoa;
+  modelPessoa: TmodelPessoa;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmPessoa.edtPesquisaChange(Sender: TObject);
+begin
+  inherited;
+  if RGFiltro.ItemIndex = 0 then
+      DSBusca.DataSet.Locate('ID', edtPesquisa.Text, [loPartialKey])
+  else
+      DSBusca.DataSet.Locate('NOME', edtPesquisa.Text, [loPartialKey]);
+end;
+
+procedure TfrmPessoa.navDadosClick(Sender: TObject; Button: TNavigateBtn);
+var
+  proxCodigo: Integer;
+begin
+  inherited;
+  modelPessoa := TmodelPessoa.Create(Self);
+  case Button of
+    nbInsert:
+    begin
+      proxCodigo := modelPessoa.QMaxId.FieldByName('CODIGO').AsInteger + 1;
+      edtCodigo.Text := IntToStr(proxCodigo);
+    end;
+  end;
+  modelPessoa.Free;
+end;
+
+end.

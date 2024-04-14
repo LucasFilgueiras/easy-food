@@ -1,0 +1,8 @@
+object modelPedidoVenda: TmodelPedidoVenda
+  Height = 480
+  Width = 640
+  object QBuscaPedidoVenda: TFDQuery
+    Left = 120
+    Top = 128
+  end
+end

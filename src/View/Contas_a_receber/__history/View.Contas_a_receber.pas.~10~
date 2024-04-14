@@ -1,0 +1,67 @@
+unit View.Contas_a_receber;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Base, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  Model.Contas_a_receber, Vcl.Buttons;
+
+type
+  TfrmContasAReceber = class(TfrmBase)
+    lblCodigo: TLabel;
+    edtCodigo: TDBEdit;
+    lblOrigem: TLabel;
+    edtOrigem: TDBEdit;
+    lblValor: TLabel;
+    edtValor: TDBEdit;
+    lblStatus: TLabel;
+    btnReceber: TBitBtn;
+    procedure pgcFormularioChange(Sender: TObject);
+    procedure btnReceberClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmContasAReceber: TfrmContasAReceber;
+  modelContasAReceber: TmodelContasAReceber;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmContasAReceber.btnReceberClick(Sender: TObject);
+begin
+  inherited;
+  if MessageDlg('Deseja realmente pagar esta conta?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    modelContasAReceber := TmodelContasAReceber.Create(Self);
+    modelContasAReceber.QReceberConta.SQL.Clear;
+    modelContasAReceber.QReceberConta.SQL.Add('UPDATE contas_a_receber SET status = 1 WHERE id=:id');
+    modelContasAReceber.QReceberConta.ParamByName('id').AsInteger := StrToInt(edtCodigo.Text);
+    modelContasAReceber.QReceberConta.ExecSQL;
+    modelContasAReceber.Free;
+  end;
+end;
+
+procedure TfrmContasAReceber.pgcFormularioChange(Sender: TObject);
+begin
+  inherited;
+  if DSBusca.DataSet.FieldByName('status').Value = 0 then
+  begin
+    lblStatus.Caption:= 'Status da conta: Não recebida';
+    lblStatus.Font.Color:= clRed;
+  end
+  else
+  begin
+    lblStatus.Caption:= 'Status da conta: Recebida';
+    lblStatus.Font.Color:= clGreen;
+    btnReceber.Enabled:= false;
+  end;
+end;
+
+end.
